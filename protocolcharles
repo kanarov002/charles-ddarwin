@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      .container {
+        position: absolute;
+        right: 420px;
+        top: 100px;
+        height: 50px;
+        padding: 20px;
+        background-color: teal;
+        text-align: center;
+        width: 300px;
+        border-radius: 20px;
+      }
+      .notification {
+        position: fixed;
+        top: 0;
+        right: 450px;
+        padding: 10px;
+        background-color: black;
+        color: white;
+        font-size: 1.2rem;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      .notification.show {
+        opacity: 1;
+      }
+      .button {
+        width: 80px;
+        height: 50px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+      }
+      .button:hover {
+        background-color: #52BE80;
+        box-shadow: 2px 2px 5px;
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3> MAY KAINAN BA PRE ? </h3>
+      <button class="button" data-notification="notification1">MERON</button>
+      <button class="button" data-notification="notification3">WALA</button>
+    </div>
+    <div class="notification" id="notification1">
+      HAPPY BIRTHDAY PRE ANONG ORAS BA?
+    </div>
+    <div class="notification" id="notification3">
+      HAPPY BIRTHDAY PA RIN CHARLES KAHIT ALA PAKAIN
+    </div>
+    <script>
+      // Get all button elements
+      const buttons = document.querySelectorAll('.button');
+
+      // Add click event listener to each button
+      buttons.forEach(button => {
+        button.addEventListener('click', (event) => {
+          // Get notification element ID from data attribute
+          const notificationID = event.target.getAttribute('data-notification');
+          // Show corresponding notification
+          document.getElementById(notificationID).classList.add('show');
+          // Hide notification after 3 seconds
+          setTimeout(() => {
+            document.getElementById(notificationID).classList.remove('show');
+          }, 3000);
+        });
+      });
+    </script>
+  </body>
+</html>
